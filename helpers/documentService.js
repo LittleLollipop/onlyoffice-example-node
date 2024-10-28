@@ -38,6 +38,7 @@ superagent
   .get(`${process.env.JWT_GETER_URL}`)
   .then(resp => {
     cfgSignatureSecret = resp
+    console.log('cfgSignatureSecret:', cfgSignatureSecret)
   })
   .catch((error) => {
     console.error(error);

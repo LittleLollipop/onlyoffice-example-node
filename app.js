@@ -51,6 +51,7 @@ superagent
   .get(`${process.env.JWT_GETER_URL}`)
   .then(resp => {
     cfgSignatureSecret = resp
+    console.log('cfgSignatureSecret:', cfgSignatureSecret)
   })
   .catch((error) => {
     console.error(error);
@@ -1107,6 +1108,7 @@ app.get('/editor', (req, res) => { // define a handler for editing document
     };
 
     if (cfgSignatureEnable) {
+      console.log('cfgSignatureSecret', cfgSignatureSecret)
       app.render('config', argss, (err, html) => { // render a config template with the parameters specified
         if (err) {
           console.log(err);
