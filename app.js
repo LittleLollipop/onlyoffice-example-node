@@ -43,7 +43,19 @@ const cfgSignatureUseForRequest = configServer.get('token.useforrequest');
 const cfgSignatureAuthorizationHeader = configServer.get('token.authorizationHeader');
 const cfgSignatureAuthorizationHeaderPrefix = configServer.get('token.authorizationHeaderPrefix');
 const cfgSignatureSecretExpiresIn = configServer.get('token.expiresIn');
-const cfgSignatureSecret = configServer.get('token.secret');
+
+// const cfgSignatureSecret = configServer.get('token.secret');
+let cfgSignatureSecret = ''
+import superagent from 'superagent';
+superagent
+  .get(`${process.env.JWT_GETER_URL}`)
+  .then(resp => {
+    cfgSignatureSecret = resp
+  })
+  .catch((error) => {
+    reject(error);
+  });
+
 const verifyPeerOff = configServer.get('verify_peer_off');
 const plugins = config.get('plugins');
 
