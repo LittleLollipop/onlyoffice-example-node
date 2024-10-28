@@ -37,8 +37,11 @@ const superagent = require('superagent');
 superagent
   .get(`${process.env.JWT_GETER_URL}`)
   .then(resp => {
-    cfgSignatureSecret = resp
-    console.log('cfgSignatureSecret:', cfgSignatureSecret)
+    if (resp.statusCode == 200) {
+
+      cfgSignatureSecret = resp.body
+      console.log('cfgSignatureSecret:', cfgSignatureSecret)
+    }
   })
   .catch((error) => {
     console.error(error);
