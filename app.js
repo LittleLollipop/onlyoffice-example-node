@@ -44,8 +44,8 @@ const cfgSignatureAuthorizationHeader = configServer.get('token.authorizationHea
 const cfgSignatureAuthorizationHeaderPrefix = configServer.get('token.authorizationHeaderPrefix');
 const cfgSignatureSecretExpiresIn = configServer.get('token.expiresIn');
 
-let cfgSignatureSecret = configServer.get('token.secret');
-// let cfgSignatureSecret = ''
+// let cfgSignatureSecret = configServer.get('token.secret');
+let cfgSignatureSecret = ''
 const superagent = require('superagent');
 superagent
   .get(`${process.env.JWT_GETER_URL}`)
@@ -53,7 +53,7 @@ superagent
     cfgSignatureSecret = resp
   })
   .catch((error) => {
-    reject(error);
+    console.error(error);
   });
 
 const verifyPeerOff = configServer.get('verify_peer_off');
