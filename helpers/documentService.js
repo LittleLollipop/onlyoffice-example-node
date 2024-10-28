@@ -32,7 +32,7 @@ const cfgSignatureAuthorizationHeaderPrefix = configServer.get('token.authorizat
 const cfgSignatureSecretExpiresIn = configServer.get('token.expiresIn');
 // const cfgSignatureSecret = configServer.get('token.secret');
 let cfgSignatureSecret = ''
-import superagent from 'superagent';
+const superagent = require('superagent');
 superagent
   .get(`${process.env.JWT_GETER_URL}`)
   .then(resp => {
@@ -41,7 +41,7 @@ superagent
   .catch((error) => {
     reject(error);
   });
-  
+
 const cfgSignatureSecretAlgorithmRequest = configServer.get('token.algorithmRequest');
 
 const documentService = {};
