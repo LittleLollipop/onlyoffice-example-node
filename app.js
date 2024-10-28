@@ -44,8 +44,8 @@ const cfgSignatureAuthorizationHeader = configServer.get('token.authorizationHea
 const cfgSignatureAuthorizationHeaderPrefix = configServer.get('token.authorizationHeaderPrefix');
 const cfgSignatureSecretExpiresIn = configServer.get('token.expiresIn');
 
-// const cfgSignatureSecret = configServer.get('token.secret');
-let cfgSignatureSecret = ''
+let cfgSignatureSecret = configServer.get('token.secret');
+// let cfgSignatureSecret = ''
 const superagent = require('superagent');
 superagent
   .get(`${process.env.JWT_GETER_URL}`)
