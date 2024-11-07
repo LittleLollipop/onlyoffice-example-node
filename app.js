@@ -639,6 +639,7 @@ app.post('/track', async (req, res) => { // define a handler for tracking file c
       try {
         const { status, data } = await urllib.request(downloadUri, { method: 'GET' });
 
+        console.log('downloadUri', downloadUri)
         if (status !== 200) throw new Error(`Document editing service returned status: ${status}`);
 
         const storagePath = req.DocManager.storagePath(newFileName, userAddress);
